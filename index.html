@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <style>
+    body {
+      background-color: linen;
+      font-family: arial;
+    }
+    .msg {
+      color: black;
+      margin: 10px 0px 10px 20px;
+    }     
+    .form, .link {
+      margin: 0 0 0 20px;
+    }
+    </style>
+    <title>Guessing random numbers is fun!</title>
+  </head>
+  <body>
+    <div class="msg"> {{ playermessage }} </div>
+{% if stillguessing %}
+    <form action="/" method="post" class="form">
+      <input type="hidden" value="{{currrand}}" name="currrand">
+      <input type="hidden" value="{{guesscount}}" name="guesscount">
+      <div><input type="text" value="" name="guess" id="guess" autocomplete="off" autofocus> <input type="submit" value="Guess"></div>
+    </form>
+    <div class="msg"> Guesses so far: {{ guesscount }}  </div>
+{% else %}
+    <a class="link" href="/">Play again</a>
+{% endif %}
+  </body>
+</html>
+{% endautoescape %}
